@@ -1,0 +1,94 @@
+[package]
+name = "devela_depend"
+description = "Optional external dependencies for `devela`."
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.72.1" # sync with readme & .github/workflows/check.yml
+authors = ["José Luis Cruz <joseluis@andamira.net>"]
+repository = "https://github.com/andamira/devela_depend"
+documentation = "https://docs.rs/devela_depend"
+license = "MIT OR Apache-2.0"
+include = [
+	"/src/**/*.rs",
+	"/src/**/*.md",
+	"/Cargo.toml",
+	"/README.md",
+	"/LICENSE-*",
+]
+categories = []
+keywords = []
+publish = true
+
+[features]
+
+# default = []
+
+
+#* environment features *
+
+std = [ # disables `no_std` compatibility and enables `std` functionality
+	"alloc", "atomic?/std", "bytemuck?/extern_crate_std" ]
+alloc = [ # enables `alloc` functionality
+	"bytemuck?/extern_crate_alloc" ]
+no_std = [] # enables functionality incompatible with `std` (unused)
+
+
+#* modules features *
+
+full = [ # enables all the external dependencies
+	"atomic",
+	"az",
+	"bytemuck",
+	"devela_macros",
+	"portable-atomic",
+	"const-str",
+	"unicode-segmentation",
+]
+
+
+#* safety features *#
+
+unsafe = [] # enables unsafe features in this crate (unused)
+safe = [] # forbids `unsafe` in this crate
+safest = ["safe"] # forbids `unsafe` recursively (unused)
+unsafest = ["unsafe"] # enable `unsafe` recursively (unused)
+
+#* nightly features *#
+
+nightly = [] # used only for enhanced documentation (unused)
+nightly_docs = ["nightly", "full", "std", "unsafe"] # features for docs.rs
+
+
+# ------------------------------------------------------------------------------
+
+[dependencies]
+
+devela_macros = { version  = "0.7.0", optional = true }
+#devela_macros = { path = "../macros", optional = true }
+
+az = { version = "1.2.1", default-features = false, optional = true }
+bytemuck = { version = "1.13.1", default-features = false, optional = true }
+const-str = { version = "0.5.6", default-features = false, optional = true }
+unicode-segmentation = { version = "1.10.1", default-features = false, optional = true }
+
+[dependencies.atomic]
+version = "0.6.0"
+default-features = false
+optional = true
+features = ["fallback"]
+
+[dependencies.portable-atomic]
+version = "1.4.3"
+default-features = false
+optional = true
+features = ["fallback", "float"]
+
+
+# ------------------------------------------------------------------------------
+
+[package.metadata.docs.rs]
+no-default-features = true
+features = ["nightly_docs"]
+
+[badges]
+maintenance = { status = "experimental" }
