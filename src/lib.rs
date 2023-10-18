@@ -52,6 +52,15 @@ pub use ::const_str;
 #[cfg_attr(feature = "nightly", doc(cfg(feature = "devela_macros")))]
 pub use ::devela_macros;
 
+/// <span class="stab portability" title="re-exported `hashbrown`
+/// crate">`hashbrown`</span>
+#[doc = "A drop-in replacement for Rust’s standard `HashMap` and `HashSet`.\n\n"]
+#[doc = "*Re-exported [`hashbrown`](https://docs.rs/hashbrown)* crate.\n\n---"]
+#[doc(inline)]
+#[cfg(feature = "hashbrown")]
+#[cfg_attr(feature = "nightly", doc(cfg(feature = "hashbrown")))]
+pub use ::hashbrown;
+
 /// <span class="stab portability" title="re-exported `portable-atomic`
 /// crate">`portable-atomic`</span>
 #[doc = "Portable atomic types including 128-bit atomics, floats, etc.\n\n"]
