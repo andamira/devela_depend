@@ -4,100 +4,81 @@
 //
 
 // warnings
-#![warn(clippy::all)]
-// environment
-#![cfg_attr(not(feature = "std"), no_std)]
-#![cfg_attr(feature = "safe", forbid(unsafe_code))]
+#![warn(missing_docs, clippy::all)]
+// nightly, safety, environment
 #![cfg_attr(feature = "nightly", feature(doc_cfg))]
+#![cfg_attr(feature = "safe", forbid(unsafe_code))]
+#![cfg_attr(not(feature = "std"), no_std)]
 #[cfg(feature = "alloc")]
 extern crate alloc;
 
 /* optional crates */
 
-#[doc(inline)]
-#[doc = d!(tag "atomic")]
-#[doc = "A generic atomic wrapper type."]
-#[doc = d!(link "atomic")]
-#[cfg(feature = "atomic")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "atomic")))]
-pub use ::atomic;
+reexport! { "atomic", atomic,
+    "A generic atomic wrapper type."
+}
+reexport! { "az", az,
+    "Casts and checked casts."
+}
+reexport! { "bytemuck", bytemuck,
+    "Small utilities for casting between plain data types."
+}
+reexport! { "const-str", const_str,
+    "Compile-time string operations."
+}
+reexport! { "devela_macros", devela_macros,
+    "Procedural macros for `devela`."
+}
+reexport! { "hashbrown", hashbrown,
+    also: "alloc",
+    "A drop-in replacement for Rust’s standard `HashMap` and `HashSet`."
+}
+reexport! { "portable-atomic", portable_atomic,
+    "Portable atomic types including 128-bit atomics, floats, etc."
+}
+reexport! { "unicode-segmentation", unicode_segmentation,
+    "Split strings on Grapheme Cluster, Word or Sentence boundaries."
+}
 
-#[doc(inline)]
-#[doc = d!(tag "az")]
-#[doc = "Casts and checked casts."]
-#[doc = d!(link "az")]
-#[cfg(feature = "az")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "az")))]
-pub use ::az;
+// Macro helper for documentation of re-exported items.
+#[rustfmt::skip]
+#[allow(unused)]
+macro_rules! reexport {
+    // depends just on the optional dependency
+    ( $dep_name:literal, $dep_module:ident,
+      $dep_description:literal
+      $(,)?
+    ) => {
+        #[doc(inline)]
+        #[doc = concat!("<span class='stab portability' title='re-exported `",
+            $dep_name, "` crate'>`", $dep_name, "`</span>")]
+        #[doc = $dep_description]
+        #[doc = concat!("\n\n*Re-exported [`", $dep_name,
+            "`](https://docs.rs/", $dep_name, ")* crate.\n\n---")]
 
-#[doc(inline)]
-#[doc = d!(tag "bytemuck")]
-#[doc = "Small utilities for casting between plain data types."]
-#[doc = d!(link "bytemuck")]
-#[cfg(feature = "bytemuck")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "bytemuck")))]
-pub use ::bytemuck;
-
-#[doc(inline)]
-#[doc = d!(tag "const-str")]
-#[doc = "Compile-time string operations."]
-#[doc = d!(link "const-str")]
-#[cfg(feature = "const-str")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "const-str")))]
-pub use ::const_str;
-
-#[doc(inline)]
-#[doc = d!(tag "devela_macros")]
-#[doc = "Procedural macros for `devela`."]
-#[doc = d!(link "devela_macros")]
-#[cfg(feature = "devela_macros")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "devela_macros")))]
-pub use ::devela_macros;
-
-#[doc(inline)]
-#[doc = d!(tag "hashbrown")]
-#[doc = "A drop-in replacement for Rust’s standard `HashMap` and `HashSet`."]
-#[doc = d!(link "hashbrown")]
-#[cfg(feature = "hashbrown")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "hashbrown")))]
-pub use ::hashbrown;
-
-#[doc(inline)]
-#[doc = d!(tag "portable-atomic")]
-#[doc = "Portable atomic types including 128-bit atomics, floats, etc."]
-#[doc = d!(link "portable-atomic")]
-#[cfg(feature = "portable-atomic")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "portable-atomic")))]
-pub use ::portable_atomic;
-
-#[doc(inline)]
-#[doc = d!(tag "unicode-segmentation")]
-#[doc = "Split strings on Grapheme Cluster, Word or Sentence boundaries."]
-#[doc = d!(link "unicode-segmentation")]
-#[cfg(feature = "unicode-segmentation")]
-#[cfg_attr(feature = "nightly", doc(cfg(feature = "unicode-segmentation")))]
-pub use ::unicode_segmentation;
-
-/* helper macro */
-
-macro_rules! d {
-    (tag $crate_name:literal) => {
-        concat!(
-            "<span class='stab portability' title='re-exported `",
-            $crate_name,
-            "` crate'>`",
-            $crate_name,
-            "`</span>"
-        )
+        #[cfg(feature = $dep_name)]
+        #[cfg_attr(feature = "nightly", doc(cfg(feature = $dep_name)))]
+        pub use ::$dep_module;
     };
-    (link $crate_name:literal) => {
-        concat!(
-            "\n\n*Re-exported [`",
-            $crate_name,
-            "`](https://docs.rs/",
-            $crate_name,
-            ")* crate.\n\n---"
-        )
+
+    // depends on an optional dependency and also on another feature, e.g. "alloc"
+    ( $dep_name:literal, $dep_module:ident,
+      also: $another_feature:literal,
+      $dep_description:literal
+      $(,)?
+    ) => {
+        #[doc(inline)]
+        #[doc = concat!("<span class='stab portability' title='re-exported `",
+            $dep_name, "` crate'>`", $dep_name, "`</span>")]
+        #[doc = $dep_description]
+        #[doc = concat!("\n\n*Re-exported [`", $dep_name,
+            "`](https://docs.rs/", $dep_name, ")* crate.\n\n---")]
+
+        #[cfg_attr(feature = "nightly",
+            doc(cfg(all(feature = $dep_name, feature = $another_feature))))]
+        #[cfg(all(feature = $dep_name, feature = $another_feature))]
+        pub use ::$dep_module;
     };
 }
-use d;
+#[allow(unused)]
+use reexport;
