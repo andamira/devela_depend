@@ -33,6 +33,9 @@ reexport! { "hashbrown", hashbrown,
     also: "alloc",
     "A drop-in replacement for Rust’s standard `HashMap` and `HashSet`."
 }
+reexport! { "libm", libm,
+    "A port of [`MUSL`](https://musl.libc.org/)'s libm to Rust.."
+}
 reexport! { "portable-atomic", portable_atomic,
     "Portable atomic types including 128-bit atomics, floats, etc."
 }
