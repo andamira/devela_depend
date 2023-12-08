@@ -26,9 +26,6 @@ reexport! { "bytemuck", bytemuck,
 reexport! { "const-str", const_str,
     "Compile-time string operations."
 }
-reexport! { "devela_macros", devela_macros,
-    "Procedural macros for `devela`."
-}
 reexport! { "hashbrown", hashbrown,
     also: "alloc",
     "A drop-in replacement for Rust’s standard `HashMap` and `HashSet`."

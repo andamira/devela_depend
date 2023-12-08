@@ -44,7 +44,6 @@ full = [ # enables all the external dependencies
 	"az",
 	"bytemuck",
 	"const-str",
-	"devela_macros",
 	"hashbrown",
 	"libm",
 	"portable-atomic",
@@ -72,9 +71,7 @@ nightly_docs = ["nightly", "full", "std", "unsafe"] # features for docs.rs
 
 az = { version = "1.2.1", default-features = false, optional = true }
 const-str = { version = "0.5.6", default-features = false, optional = true }
-devela_macros = { version  = "0.7.0", optional = true }
 libm = { version = "0.2.8", default-features = false, optional = true }
-#devela_macros = { path = "../macros", optional = true }
 unicode-segmentation = { version = "1.10.1", default-features = false, optional = true }
 [dependencies.atomic]
 version = "0.6.0"
