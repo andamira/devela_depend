@@ -62,7 +62,7 @@ unsafest = ["unsafe"] # enable `unsafe` recursively (unused)
 #* nightly features *#
 
 nightly = [] # used only for enhanced documentation (unused)
-nightly_docs = ["nightly", "full", "std", "unsafe"] # features for docs.rs
+docsrs = ["nightly", "full", "std", "unsafe"]
 
 
 # ------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ features = ["fallback", "float"]
 
 [package.metadata.docs.rs]
 no-default-features = true
-features = ["nightly_docs"]
+features = ["docsrs"]
 
 [badges]
 maintenance = { status = "experimental" }
