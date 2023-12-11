@@ -37,7 +37,10 @@ reexport! { "portable-atomic", portable_atomic,
     "Portable atomic types including 128-bit atomics, floats, etc."
 }
 reexport! { "unicode-segmentation", unicode_segmentation,
-    "Split strings on Grapheme Cluster, Word or Sentence boundaries."
+    "Split strings on Grapheme Clusters, Words or Sentences."
+}
+reexport! { "unicode-width", unicode_width,
+    "Determine displayed width of `char` and `str` types."
 }
 
 // Macro helper for documentation of re-exported items.
