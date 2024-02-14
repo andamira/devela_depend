@@ -3,7 +3,8 @@ name = "devela_depend"
 description = "Optional external dependencies for `devela`."
 version = "0.2.0"
 edition = "2021"
-rust-version = "1.72.1" # sync with readme & .github/workflows/check.yml
+# sync with readme & .github/workflows/check.yml
+rust-version = "1.72.1" # required by: hashbrown: ahash
 authors = ["José Luis Cruz <joseluis@andamira.net>"]
 repository = "https://github.com/andamira/devela_depend"
 documentation = "https://docs.rs/devela_depend"
@@ -15,13 +16,18 @@ include = [
 	"/README.md",
 	"/LICENSE-*",
 ]
-categories = []
+categories = ["development-tools", "rust-patterns", "no-std::no-alloc"]
 keywords = []
 publish = true
 
 [features]
 
+#* miscellaneous features *#
+
 # default = []
+
+# enables the most complete version of the documentation:
+docsrs = ["nightly", "all", "std", "unsafe"]
 
 
 #* environment features *
@@ -33,13 +39,13 @@ std = [ # disables `no_std` compatibility and enables `std` functionality
 alloc = [ # enables `alloc` functionality
 	"bytemuck?/extern_crate_alloc",
 ]
-no_std = [ # enables functionality incompatible with `std` (unused)
+no_std = [ # enables functionality incompatible with or substitute of `std`
 ]
 
 
-#* modules features *
+#* module features *
 
-full = [ # enables all the external dependencies
+all = [ # enables all the external dependencies
 	"atomic",
 	"az",
 	"bytemuck",
@@ -54,15 +60,13 @@ full = [ # enables all the external dependencies
 
 #* safety features *#
 
-unsafe = [] # enables unsafe features in this crate (unused)
+unsafe = [] # enables `unsafe` features in this crate
 safe = [] # forbids `unsafe` in this crate
-safest = ["safe"] # forbids `unsafe` recursively (unused)
-unsafest = ["unsafe"] # enable `unsafe` recursively (unused)
+
 
 #* nightly features *#
 
-nightly = [] # used only for enhanced documentation (unused)
-docsrs = ["nightly", "full", "std", "unsafe"]
+nightly = []
 
 
 # ------------------------------------------------------------------------------
