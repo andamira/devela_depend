@@ -31,7 +31,10 @@ reexport! { "hashbrown", hashbrown,
     "A drop-in replacement for Rust’s standard `HashMap` and `HashSet`."
 }
 reexport! { "libm", libm,
-    "A port of [`MUSL`](https://musl.libc.org/)'s libm to Rust.."
+    "A port of [`MUSL`](https://musl.libc.org/)'s libm to Rust."
+}
+reexport! { "memchr", memchr,
+    "Optimized routines for string search primitives."
 }
 reexport! { "portable-atomic", portable_atomic,
     "Portable atomic types including 128-bit atomics, floats, etc."
@@ -41,6 +44,9 @@ reexport! { "unicode-segmentation", unicode_segmentation,
 }
 reexport! { "unicode-width", unicode_width,
     "Determine displayed width of `char` and `str` types."
+}
+reexport! { "wide", wide,
+    "SIMD-compatible data types."
 }
 
 // Macro helper for documentation of re-exported items.
