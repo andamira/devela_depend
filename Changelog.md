@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 ## [Unreleased]
 
+## [0.4.0] - 2024-02-20
+
+### Added
+- add optional dependencies: `crossterm`, `miniquad`.
+- new feature: `crossterm_events`.
+
+### Removed
+- remove dependency `az`.
 
 ## [0.3.0] - 2024-02-14
 
@@ -52,7 +60,8 @@ First release.
 - add optional dependencies:
   `atomic`, `az`, `bytemuck`, `const-str`, `devela_macros`, `portable-atomic`, `unicode-segmentation`.
 
-[unreleased]: https://github.com/andamira/devela_macros/compare/v0.3.0...HEAD
+[unreleased]: https://github.com/andamira/devela_macros/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/andamira/devela_macros/releases/tag/v0.4.0
 [0.3.0]: https://github.com/andamira/devela_macros/releases/tag/v0.3.0
 [0.2.0]: https://github.com/andamira/devela_macros/releases/tag/v0.2.0
 [0.1.1]: https://github.com/andamira/devela_macros/releases/tag/v0.1.1
