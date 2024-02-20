@@ -17,9 +17,6 @@ extern crate alloc;
 reexport! { "atomic", atomic,
     "A generic atomic wrapper type."
 }
-reexport! { "az", az,
-    "Casts and checked casts."
-}
 reexport! { "bytemuck", bytemuck,
     "Small utilities for casting between plain data types."
 }

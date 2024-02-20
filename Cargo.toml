@@ -56,7 +56,6 @@ no_std = [ # enables functionality incompatible with or substitute of `std`
 
 all = [ # enables all the external dependencies
 	"atomic",
-	"az",
 	"bytemuck",
 	"const-str",
 	"crossterm", "crossterm_events",
@@ -92,7 +91,6 @@ crossterm_events = ["crossterm?/events"]
 [dependencies]
 # These optional dependencies must copied as `devela` optional dependencies too.
 
-az = { version = "1.2.1", default-features = false, optional = true }
 const-str = { version = "0.5.6", default-features = false, optional = true }
 libm = { version = "0.2.8", default-features = false, optional = true }
 memchr = { version = "2.7.1", default-features = false, optional = true }
