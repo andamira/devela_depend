@@ -20,12 +20,21 @@ categories = ["development-tools", "rust-patterns", "no-std::no-alloc"]
 keywords = []
 publish = true
 
+
+# ------------------------------------------------------------------------------
+# Features are grouped in the following categories:
+# - Miscellaneous
+# - Environment
+# - Module
+# - Safety
+# - Nightly
+# - Dependency
+
 [features]
 
 #* miscellaneous features *#
 
-# default = []
-
+# default = [] # no default features
 # enables the most complete version of the documentation:
 docsrs = ["nightly", "all", "std", "unsafe"]
 
@@ -50,9 +59,11 @@ all = [ # enables all the external dependencies
 	"az",
 	"bytemuck",
 	"const-str",
+	"crossterm", "crossterm_events",
 	"hashbrown",
 	"libm",
 	"memchr",
+	"miniquad",
 	"portable-atomic",
 	"unicode-segmentation",
 	"unicode-width",
@@ -71,6 +82,11 @@ safe = [] # forbids `unsafe` in this crate
 nightly = []
 
 
+#* dependency features *#
+
+crossterm_events = ["crossterm?/events"]
+
+
 # ------------------------------------------------------------------------------
 
 [dependencies]
@@ -80,28 +96,34 @@ az = { version = "1.2.1", default-features = false, optional = true }
 const-str = { version = "0.5.6", default-features = false, optional = true }
 libm = { version = "0.2.8", default-features = false, optional = true }
 memchr = { version = "2.7.1", default-features = false, optional = true }
+miniquad = { version = "0.4.0-alpha.10", default-features = false, optional = true }
 unicode-segmentation = { version = "1.10.1", default-features = false, optional = true }
 unicode-width = { version = "0.1.11", default-features = false, optional = true }
 wide = { version = "0.7.15", optional = true, default-features = false }
 [dependencies.atomic]
 version = "0.6.0"
-default-features = false
 optional = true
+default-features = false
 features = ["fallback"]
 [dependencies.bytemuck]
 version = "1.14.0"
-default-features = false
 optional = true
+default-features = false
 features = ["align_offset", "min_const_generics", "must_cast", "zeroable_maybe_uninit"]
+[dependencies.crossterm]
+version = "0.27.0"
+optional = true
+default-features = false
+features = ["windows"]
 [dependencies.hashbrown]
 version = "0.14.1"
-default-features = false
 optional = true
+default-features = false
 features = ["ahash", "inline-more"]
 [dependencies.portable-atomic]
 version = "1.4.3"
-default-features = false
 optional = true
+default-features = false
 features = ["fallback", "float"]
 
 

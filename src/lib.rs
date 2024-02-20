@@ -26,6 +26,9 @@ reexport! { "bytemuck", bytemuck,
 reexport! { "const-str", const_str,
     "Compile-time string operations."
 }
+reexport! { "crossterm", crossterm,
+    "A crossplatform terminal library for manipulating terminals."
+}
 reexport! { "hashbrown", hashbrown,
     also: "alloc",
     "A drop-in replacement for Rust’s standard `HashMap` and `HashSet`."
@@ -35,6 +38,9 @@ reexport! { "libm", libm,
 }
 reexport! { "memchr", memchr,
     "Optimized routines for string search primitives."
+}
+reexport! { "miniquad", miniquad,
+    "Cross-platform window context and rendering library."
 }
 reexport! { "portable-atomic", portable_atomic,
     "Portable atomic types including 128-bit atomics, floats, etc."
