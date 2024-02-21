@@ -43,10 +43,11 @@ docsrs = ["nightly", "all", "std", "unsafe"]
 
 std = [ # disables `no_std` compatibility and enables `std` functionality
 	"alloc",
-	"atomic?/std", "bytemuck?/extern_crate_std", "memchr?/std", "wide?/std",
+	"atomic?/std", "bytemuck?/extern_crate_std", "memchr?/std", "rand_core?/std",
+	"wide?/std",
 ]
 alloc = [ # enables `alloc` functionality
-	"bytemuck?/extern_crate_alloc", "memchr?/alloc",
+	"bytemuck?/extern_crate_alloc", "memchr?/alloc", "rand_core?/alloc"
 ]
 no_std = [ # enables functionality incompatible with or substitute of `std`
 ]
@@ -64,6 +65,7 @@ all = [ # enables all the external dependencies
 	"memchr",
 	"miniquad",
 	"portable-atomic",
+	"rand_core",
 	"unicode-segmentation",
 	"unicode-width",
 	"wide",
@@ -84,6 +86,8 @@ nightly = []
 #* dependency features *#
 
 crossterm_events = ["crossterm?/events"]
+rand_core_getrandom = ["rand_core?/getrandom"]
+rand_core_serde = ["rand_core?/serde"]
 
 
 # ------------------------------------------------------------------------------
@@ -95,6 +99,7 @@ const-str = { version = "0.5.6", default-features = false, optional = true }
 libm = { version = "0.2.8", default-features = false, optional = true }
 memchr = { version = "2.7.1", default-features = false, optional = true }
 miniquad = { version = "0.4.0-alpha.10", default-features = false, optional = true }
+rand_core = { version = "0.6.4", default-features = false, optional = true }
 unicode-segmentation = { version = "1.10.1", default-features = false, optional = true }
 unicode-width = { version = "0.1.11", default-features = false, optional = true }
 wide = { version = "0.7.15", optional = true, default-features = false }

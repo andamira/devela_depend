@@ -42,6 +42,9 @@ reexport! { "miniquad", miniquad,
 reexport! { "portable-atomic", portable_atomic,
     "Portable atomic types including 128-bit atomics, floats, etc."
 }
+reexport! { "rand_core", rand_core,
+    "Random number generation traits."
+}
 reexport! { "unicode-segmentation", unicode_segmentation,
     "Split strings on Grapheme Clusters, Words or Sentences."
 }
