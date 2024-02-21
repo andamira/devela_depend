@@ -59,13 +59,13 @@ all = [ # enables all the external dependencies
 	"atomic",
 	"bytemuck",
 	"const-str",
-	"crossterm", "crossterm_events",
+	"crossterm", "crossterm_bracketed_paste", "crossterm_events",
 	"hashbrown",
 	"libm",
 	"memchr",
 	"miniquad",
 	"portable-atomic",
-	"rand_core",
+	"rand_core", "rand_core_getrandom", "rand_core_serde",
 	"unicode-segmentation",
 	"unicode-width",
 	"wide",
@@ -85,6 +85,7 @@ nightly = []
 
 #* dependency features *#
 
+crossterm_bracketed_paste = ["crossterm?/bracketed-paste"]
 crossterm_events = ["crossterm?/events"]
 rand_core_getrandom = ["rand_core?/getrandom"]
 rand_core_serde = ["rand_core?/serde"]
