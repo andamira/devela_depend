@@ -10,7 +10,7 @@ See [the documentation](https://docs.rs/devela_depend/) for more information.
 
 ## Status
 
-This is currently in an experimental stage of development.
+This crate is deprecated.
 
 ## License
 This project is dual licensed under either [MIT](LICENSE-MIT)

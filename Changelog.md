@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog], and this project adheres to
 [Semantic Versioning].
 
 
-## [Unreleased]
+## [0.5.0] - 2024-03-03
+
+Deprecate crate
 
 ## [0.4.1] - 2024-02-21
 
@@ -72,7 +74,8 @@ First release.
 - add optional dependencies:
   `atomic`, `az`, `bytemuck`, `const-str`, `devela_macros`, `portable-atomic`, `unicode-segmentation`.
 
-[unreleased]: https://github.com/andamira/devela_macros/compare/v0.4.1...HEAD
+[unreleased]: https://github.com/andamira/devela_macros/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/andamira/devela_macros/releases/tag/v0.5.0
 [0.4.1]: https://github.com/andamira/devela_macros/releases/tag/v0.4.1
 [0.4.0]: https://github.com/andamira/devela_macros/releases/tag/v0.4.0
 [0.3.0]: https://github.com/andamira/devela_macros/releases/tag/v0.3.0
